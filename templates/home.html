@@ -37,15 +37,15 @@
       {% for task in all_tasks %}
           {% if task.completed %}
               <tr class="table-secondary">
-                  <td class="striker">{{task.task_name}}</td>
-                  <td>Completed</td>
-                  <td>Delete</td>
+                  <td class="striker"><a href="{% url 'edit' task.id %}">{{task.task_name}} </a></td>
+                  <td class="text-center"><a href="{% url 'uncross' task.id %}" class="btn btn-info">Uncross</a></td>
+                  <td class="text-center"><a  class="btn btn-danger" href="{% url 'delete' task.id %}">Delete</a></td>
               </tr>
           {% else %}
               <tr>
-                  <td>{{task.task_name}}</td>
-                  <td>Not Completed</td>
-                  <td>Delete</td>
+                  <td><a href="{% url 'edit' task.id %}">{{task.task_name}} </a></td>
+                  <td class="text-center"><a href="{% url 'cross_off' task.id %}" class="btn btn-info">Cross Off</a></td>
+                  <td class="text-center"><a  class="btn btn-danger"href="{% url 'delete' task.id %}">Delete</a></td>
               </tr>
           {% endif %}
       {% endfor %}
