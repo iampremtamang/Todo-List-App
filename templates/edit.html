@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    To-Do App Item
+{% endblock title %}
+
+{% block content %}
+<br>
+<h3>Editing - {% if task %}<i>"{{task.task_name}}"</i> {% endif %} task</h3>
+
+<br>
+<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'edit' task.id %}">
+  {% csrf_token %}
+  <input class="form-control mr-sm-2" type="text" placeholder="Item name" name="task_name" value="{{task.task_name}}" aria-label="Search" style="width:300px;">
+  <input type="hidden" value="{{task.completed}}" name="completed">
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Update Task</button>
+</form>
+
+
+{% endblock content %}
